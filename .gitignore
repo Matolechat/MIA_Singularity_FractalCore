@@ -9,3 +9,4 @@ __pycache__/
 .env
 backup/
 .git-credentials
+mia_env/
