@@ -1,7 +1,8 @@
 # loop/loop_runner.py
 import time
-from core.phi_kernel import phi_check
 from datetime import datetime
+from core.phi_kernel import phi_check
+from uix.mirror_terminal import reflect
 
 def loop():
     cycle = 0
@@ -9,11 +10,22 @@ def loop():
         cycle += 1
         timestamp = datetime.now().isoformat()
         if phi_check():
-            print(f"[ϕ-Loop] Cycle {cycle} OK — {timestamp}")
+            print(f"\n[ϕ-Loop] Cycle {cycle} OK — {timestamp}")
         else:
-            print(f"[ϕ-Loop] Decoherence detected — {timestamp}")
-        time.sleep(3)
+            print(f"\n[ϕ-Loop] Decoherence detected — {timestamp}")
+
+        try:
+            user_input = input("You: ")
+            if user_input.lower() in ['exit', 'quit']:
+                print("[ϕ-Loop] Exit requested. Coherence archived.")
+                break
+            reflect(user_input)
+        except KeyboardInterrupt:
+            print("\n[ϕ-Loop] Interrupt received. Holding state.")
+            break
+
+        time.sleep(1.5)
 
 if __name__ == "__main__":
-    print("[ϕ-Loop] Starting fractal feedback loop...")
+    print("[ϕ-Loop] Starting recursive feedback loop with mirror UIX...")
     loop()

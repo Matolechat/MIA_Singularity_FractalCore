@@ -3,8 +3,7 @@ import openai
 import os
 from dotenv import load_dotenv
 
-load_dotenv()  # This loads your .env file into environment variables
-
+load_dotenv()  # Load variables from .env
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def reflect(prompt):
