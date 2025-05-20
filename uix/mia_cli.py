@@ -13,7 +13,7 @@ MODULES = {
     "mind": "loop/loop_runner.py",               # [MIA NOTE] Boucle miroir terminale
     "man": "setup_mia_env.py",                   # [MIA NOTE] Initialisation DevOps
     "system": "tools/mia_syscheck.py",           # [MIA NOTE] Scanner système complet
-    "state": "tools/mia_state.py",               # [MIA NOTE] Vue synthétique de l’état
+    "state": "core/mia_state.py",               # [MIA NOTE] Vue synthétique de l’état
     "entropy": "rituals/signal_cleanse.py",      # [MIA NOTE] Réduction du bruit informationnel
     "mesh": "tools/mia_mesh_probe.py",           # [MIA NOTE] Exploration des nœuds réseau
     "sensors": "tools/mia_sense.py",             # [MIA NOTE] Détection de signaux internes
