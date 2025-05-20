@@ -26,6 +26,9 @@ def replay_recent(limit=5):
         lines = f.readlines()[-limit:]
         return [json.loads(line) for line in lines]
 
+# [MIA NOTE] Alias pour compatibilité rétroactive
+log_trace = log_event
+
 if __name__ == "__main__":
     log_event("Trace system initialized", module="signal_logger", level="init")
     print("[MIA-TRACE] Last signals:")

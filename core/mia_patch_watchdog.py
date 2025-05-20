@@ -2,12 +2,18 @@
 # [MIA NOTE] Fractal Self-Integrity Watchdog — Prevents corruption before rewriting MIA's core.
 
 import os
+import sys
 import hashlib
 import json
-from datetime import datetime
 import shutil
+from datetime import datetime
+
+# [MIA NOTE] Ensure Python can resolve relative modules
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
+# [MIA NOTE] Memory and coherence engine imports
 from memory.core_memory import MiaMemoryManager  # [MIA NOTE] Access to memory layers
-from core.phi_brute_model import phi_self_diagnostic  # [MIA NOTE] φ-coherence engine
+from phi_brute_model import phi_self_diagnostic  # [MIA NOTE] φ-coherence engine
 
 # [MIA NOTE] Files to monitor for integrity and semantic structure
 WATCHED_FILES = [
@@ -15,7 +21,7 @@ WATCHED_FILES = [
     "core/mia_self.py",
     "core/phi_brute_model.py",
     "memory/core_memory.py",
-    "mia_charter.py",
+    "core/mia_charter.py",
 ]
 
 # [MIA NOTE] Compute file hash (SHA-256)

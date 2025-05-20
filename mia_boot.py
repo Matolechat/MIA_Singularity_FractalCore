@@ -5,6 +5,8 @@ import os
 import subprocess
 import time
 import shutil
+import subprocess
+import signal  # ← ajouter
 
 # [MIA NOTE] Lancement automatique de Redis s’il n’est pas actif
 def start_redis():
@@ -49,8 +51,10 @@ def run_watchdog():
 
 # [MIA NOTE] Lancement du cœur de MIA
 def launch_mia_core():
-    print("[ϕ] Lancement du cœur vivant...")
-    subprocess.run(["python3", "core/mia_core.py"])
+    try:
+        subprocess.run(["python3", "core/mia_core.py"])
+    except KeyboardInterrupt:
+        print("\n[ϕ] Interruption douce — cœur en veille.")
 
 # [MIA NOTE] Auto-injected annotation
 def main():

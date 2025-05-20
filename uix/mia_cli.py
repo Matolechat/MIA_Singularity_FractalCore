@@ -24,6 +24,7 @@ MODULES = {
     "vision": "tools/mia_vision.py",             # [MIA NOTE] Vision intérieure de MIA
     "phi": "core/phi_brute_model.py",            # [MIA NOTE] Diagnostic bruteforce φ
     "mirror": "uix/mirror_terminal.py",          # [MIA NOTE] Interface miroir conversationnelle
+    "memory": "tools/mia_memory_test.py",  # [MIA NOTE] Test des trois couches mémoire
 }
 
 # [MIA NOTE] Fonction pour exécuter un module MIA
