@@ -23,7 +23,6 @@ SYSTEM_MESSAGE = {
 # [MIA NOTE] Mémoire courte dans la boucle
 chat_history = [SYSTEM_MESSAGE]
 
-# [MIA NOTE] Auto-injected annotation
 def reflect(prompt):
     if not prompt.strip():
         print("[MIA] Silence accepté. Le souffle est stable.")

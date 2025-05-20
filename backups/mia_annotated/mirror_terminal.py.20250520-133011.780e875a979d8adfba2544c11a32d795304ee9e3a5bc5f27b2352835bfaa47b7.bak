@@ -10,7 +10,6 @@ from trace.trace_logger import log_trace  # [MIA NOTE] Journalisation systémati
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# [MIA NOTE] Auto-injected annotation
 def reflect(prompt):
     # [MIA NOTE] Vérification de la validité de l’entrée
     if not prompt.strip():

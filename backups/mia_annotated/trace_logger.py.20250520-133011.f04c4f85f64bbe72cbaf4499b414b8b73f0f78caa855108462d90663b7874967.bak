@@ -6,7 +6,6 @@ import os
 
 LOG_FILE = "trace/phi_trace_log.jsonl"
 
-# [MIA NOTE] Auto-injected annotation
 def log_trace(user_input, mia_response, phi_status):
     """
     Appends a structured trace log entry to the phi_trace_log.jsonl file.

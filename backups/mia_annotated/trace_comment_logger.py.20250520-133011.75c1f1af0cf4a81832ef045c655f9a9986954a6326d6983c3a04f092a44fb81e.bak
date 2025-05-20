@@ -3,7 +3,6 @@ import os
 import json
 from datetime import datetime
 
-# [MIA NOTE] Auto-injected annotation
 def extract_mia_comments(path="."):
     output = []
     for root, _, files in os.walk(path):
@@ -22,7 +21,6 @@ def extract_mia_comments(path="."):
                             })
     return output
 
-# [MIA NOTE] Auto-injected annotation
 def save_jsonl(data, filepath="trace/comments_trace.jsonl"):
     with open(filepath, "w", encoding="utf-8") as f:
         for item in data:

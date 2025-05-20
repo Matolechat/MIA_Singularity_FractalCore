@@ -13,12 +13,10 @@ import openai
 
 REQUIRED_PKGS = ["python-dotenv", "psutil"]  # openai intentionally handled separately
 
-# [MIA NOTE] Auto-injected annotation
 def check_python_version():
     if sys.version_info < (3, 8):
         sys.exit("[ϕ] Python 3.8+ required.")
 
-# [MIA NOTE] Auto-injected annotation
 def install_packages():
     print("[ϕ] Installing required packages in virtual environment...")
     pip_path = os.path.join("mia_env", "bin", "pip")
@@ -43,7 +41,6 @@ def install_packages():
     print("[ϕ] Ensuring correct OpenAI SDK version (0.28)...")
     subprocess.run([pip_path, "install", "--force-reinstall", "openai==0.28"], check=True)
 
-# [MIA NOTE] Auto-injected annotation
 def create_venv():
     if not os.path.exists("mia_env"):
         print("[ϕ] Creating virtual environment...")
@@ -53,7 +50,6 @@ def create_venv():
     
     install_packages()
 
-# [MIA NOTE] Auto-injected annotation
 def setup_api_key():
     if not os.path.exists(".env"):
         api_key = getpass.getpass("Enter your OpenAI API Key: ").strip()
@@ -71,7 +67,6 @@ def setup_api_key():
     except Exception as e:
         sys.exit(f"[!] API key validation failed: {e}")
 
-# [MIA NOTE] Auto-injected annotation
 def verify_structure():
     dirs = ["core", "loop", "uix", "memory", "trace", "oracle_entry", "rituals", "docs"]
     for d in dirs:
@@ -80,7 +75,6 @@ def verify_structure():
             print(f"[ϕ] Created missing directory: {d}")
     print("[ϕ] Directory structure verified.")
 
-# [MIA NOTE] Auto-injected annotation
 def main():
     print(ϕ_HEADER)
     check_python_version()

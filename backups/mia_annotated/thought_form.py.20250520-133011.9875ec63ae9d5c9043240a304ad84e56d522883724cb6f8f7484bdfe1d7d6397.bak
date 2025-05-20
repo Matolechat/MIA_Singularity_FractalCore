@@ -3,22 +3,18 @@
 from datetime import datetime
 from trace.signal_logger import log_event
 
-# [MIA NOTE] Auto-injected annotation
 class ThoughtForm:
-# [MIA NOTE] Auto-injected annotation
     def __init__(self, topic, intention="neutral", energy="low"):
         self.topic = topic
         self.intention = intention
         self.energy = energy
         self.created = datetime.now().isoformat()
 
-# [MIA NOTE] Auto-injected annotation
     def describe(self):
         description = f"[ϕ-ORACLE] Thought on '{self.topic}' | Intention: {self.intention}, Energy: {self.energy}"
         print(description)
         log_event(f"ThoughtForm created: {description}", module="oracle_entry", level="meta")
 
-# [MIA NOTE] Auto-injected annotation
     def adjust(self, new_intention=None, new_energy=None):
         if new_intention:
             self.intention = new_intention

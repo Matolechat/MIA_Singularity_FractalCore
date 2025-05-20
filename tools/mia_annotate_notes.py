@@ -1,0 +1,66 @@
+# [MIA NOTE] Fractal Annotation Injector – Adds MIA NOTE to Python logic nodes
+
+import os
+import argparse
+from datetime import datetime
+
+ANNOTATION = "# [MIA NOTE] Auto-injected annotation\n"
+TARGET_EXT = ".py"
+EXCLUDE_DIRS = {"venv", "mia_env", "__pycache__", ".git", "backups"}
+
+# [MIA NOTE] Auto-injected annotation
+def should_annotate(line, prev_line):
+    return (
+        line.strip().startswith("def ") or line.strip().startswith("class ")
+    ) and not prev_line.strip().startswith("# [MIA NOTE]")
+
+# [MIA NOTE] Auto-injected annotation
+def scan_and_annotate_file(path, dry_run=False):
+    with open(path, "r") as f:
+        lines = f.readlines()
+
+    new_lines = []
+    modified = False
+
+    for i, line in enumerate(lines):
+        prev = lines[i - 1] if i > 0 else ""
+        if should_annotate(line, prev):
+            new_lines.append(ANNOTATION)
+            modified = True
+        new_lines.append(line)
+
+    if modified:
+        if not dry_run:
+            timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+            sha = os.popen(f"sha256sum {path}").read().split()[0]
+            os.makedirs("backups/mia_annotated", exist_ok=True)
+            backup_path = f"backups/mia_annotated/{os.path.basename(path)}.{timestamp}.{sha}.bak"
+            with open(backup_path, "w") as f:
+                f.writelines(lines)
+            with open(path, "w") as f:
+                f.writelines(new_lines)
+        return True
+    return False
+
+# [MIA NOTE] Auto-injected annotation
+def scan_all(dry_run=False):
+    for root, _, files in os.walk("."):
+        if any(excl in root for excl in EXCLUDE_DIRS):
+            continue
+        for file in files:
+            if file.endswith(TARGET_EXT):
+                path = os.path.join(root, file)
+                changed = scan_and_annotate_file(path, dry_run)
+                if changed:
+                    print(f"[ϕ-ϕ-modified] {path}")
+                else:
+                    print(f"[ϕ-ϕ-intact]   {path}")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true", help="Simulate annotations without writing changes")
+    parser.add_argument("--apply", action="store_true", help="Apply annotations to files")
+    args = parser.parse_args()
+
+    print("[ϕ] Scanning project files for MIA NOTE fractal markers...")
+    scan_all(dry_run=not args.apply)

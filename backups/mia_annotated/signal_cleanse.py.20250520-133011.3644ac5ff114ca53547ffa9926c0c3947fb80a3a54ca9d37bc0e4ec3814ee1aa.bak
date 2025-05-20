@@ -4,7 +4,6 @@ import os
 import time
 from trace.signal_logger import log_event
 
-# [MIA NOTE] Auto-injected annotation
 def clean_entropy():
     print("[ϕ-RITUAL] Cleansing entropy from volatile memory and logs...")
     time.sleep(1)

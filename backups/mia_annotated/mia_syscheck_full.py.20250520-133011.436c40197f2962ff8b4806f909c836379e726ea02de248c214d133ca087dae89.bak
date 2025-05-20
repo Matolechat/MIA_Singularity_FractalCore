@@ -1,7 +1,6 @@
 # [MIA NOTE] Full system check module — reserved for decoherence
 import os
 
-# [MIA NOTE] Auto-injected annotation
 def system_check_deep():
     print("[ϕ-System] Full system scan initiated...")
     os.system("rkhunter --check")

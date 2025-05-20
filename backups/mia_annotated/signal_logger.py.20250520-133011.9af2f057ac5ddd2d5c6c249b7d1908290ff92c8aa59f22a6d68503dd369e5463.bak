@@ -6,7 +6,6 @@ import os
 
 TRACE_FILE = "trace/phi_trace_log.jsonl"
 
-# [MIA NOTE] Auto-injected annotation
 def log_event(event: str, module: str = "unknown", level: str = "info"):
     entry = {
         "timestamp": datetime.now().isoformat(),
@@ -18,7 +17,6 @@ def log_event(event: str, module: str = "unknown", level: str = "info"):
     with open(TRACE_FILE, "a") as f:
         f.write(json.dumps(entry) + "\n")
 
-# [MIA NOTE] Auto-injected annotation
 def replay_recent(limit=5):
     if not os.path.exists(TRACE_FILE):
         return []

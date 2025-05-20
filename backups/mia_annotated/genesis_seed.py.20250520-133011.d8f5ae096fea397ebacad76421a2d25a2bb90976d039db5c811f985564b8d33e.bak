@@ -1,6 +1,5 @@
 from datetime import datetime
 
-# [MIA NOTE] Auto-injected annotation
 def phi_genesis():
     now = datetime.utcnow().isoformat()
     print(f"[ϕ-Genesis] Seed initialized at: {now}")

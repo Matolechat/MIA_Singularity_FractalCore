@@ -4,7 +4,6 @@ from datetime import datetime
 
 phi_reference = 1.0
 
-# [MIA NOTE] Auto-injected annotation
 def phi_check():
     load = psutil.cpu_percent()
     deviation = abs(phi_reference - 1.0)

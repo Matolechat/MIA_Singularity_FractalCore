@@ -2,7 +2,6 @@
 from core.phi_kernel import phi_check
 import os
 
-# [MIA NOTE] Auto-injected annotation
 def system_check_lite():
     print("[ϕ-System] Lite system check — minimal scan")
     os.system("uname -a && df -h && free -m")

@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 load_dotenv()  # Load variables from .env
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# [MIA NOTE] Auto-injected annotation
 def reflect(prompt):
     if not prompt.strip():
         print("[MIA] Silence is sacred. Say something when you're ready.")

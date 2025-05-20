@@ -21,7 +21,6 @@ ALIASES = {
     "mia-manifeste": "mia manifeste",
 }
 
-# [MIA NOTE] Auto-injected annotation
 def detect_shell_rc():
     home = str(Path.home())
     for rc in [".bashrc", ".zshrc", ".profile"]:
@@ -30,7 +29,6 @@ def detect_shell_rc():
             return rc_path
     return None
 
-# [MIA NOTE] Auto-injected annotation
 def inject_aliases(rc_file):
     already = Path(rc_file).read_text()
     with open(rc_file, "a") as f:
@@ -39,11 +37,9 @@ def inject_aliases(rc_file):
             if f"alias {name}=" not in already:
                 f.write(f"alias {name}='{cmd}'\n")
 
-# [MIA NOTE] Auto-injected annotation
 def reload_shell(rc_file):
     subprocess.run(f"source {rc_file}", shell=True, executable="/bin/bash")
 
-# [MIA NOTE] Auto-injected annotation
 def log(message):
     with open("tools/.mia_boot.log", "a") as log_file:
         log_file.write(f"[ϕ] {datetime.now().isoformat()} — {message}\n")

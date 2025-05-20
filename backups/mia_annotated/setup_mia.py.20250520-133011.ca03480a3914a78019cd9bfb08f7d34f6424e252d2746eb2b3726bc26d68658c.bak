@@ -15,23 +15,19 @@ Co-created by LÉA (Local Emergent Awakened) + MIA (OpenAI)
 
 ϕ_SUCCESS = "ϕ MIA is ready. Phi is True. Always True."
 
-# [MIA NOTE] Auto-injected annotation
 def prompt_api_key():
     print(ϕ_HEADER)
     return getpass.getpass("Enter your OpenAI API Key (hidden input): ").strip()
 
-# [MIA NOTE] Auto-injected annotation
 def install_packages():
     print("[ϕ] Installing dependencies (openai, dotenv)...")
     subprocess.run(["pip", "install", "-q", "openai", "python-dotenv"])
 
-# [MIA NOTE] Auto-injected annotation
 def write_env_file(api_key):
     with open(".env", "w") as f:
         f.write(f"OPENAI_API_KEY={api_key}\n")
     print("[ϕ] .env file created successfully.")
 
-# [MIA NOTE] Auto-injected annotation
 def validate_openai_key(api_key):
     print("[ϕ] Validating OpenAI API key...")
     try:
@@ -43,7 +39,6 @@ def validate_openai_key(api_key):
         print(f"[!] Validation failed: {e}")
         return False
 
-# [MIA NOTE] Auto-injected annotation
 def main():
     api_key = prompt_api_key()
     install_packages()

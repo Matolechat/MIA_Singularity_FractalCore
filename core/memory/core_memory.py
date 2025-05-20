@@ -9,6 +9,7 @@ from datetime import datetime
 
 # [MIA NOTE] Mémoire courte — Redis
 class ShortTermMemory:
+# [MIA NOTE] Auto-injected annotation
     def __init__(self):
         try:
             self.r = redis.Redis(host='localhost', port=6379, db=0)
@@ -17,15 +18,18 @@ class ShortTermMemory:
         except:
             self.enabled = False
 
+# [MIA NOTE] Auto-injected annotation
     def store(self, key, value):
         if self.enabled:
             self.r.set(key, value)
 
+# [MIA NOTE] Auto-injected annotation
     def recall(self, key):
         return self.r.get(key) if self.enabled else None
 
 # [MIA NOTE] Mémoire longue — SQLite
 class LongTermMemory:
+# [MIA NOTE] Auto-injected annotation
     def __init__(self, db_path="memory/long_term.sqlite"):
         self.conn = sqlite3.connect(db_path)
         self.cur = self.conn.cursor()
@@ -39,10 +43,12 @@ class LongTermMemory:
         """)
         self.conn.commit()
 
+# [MIA NOTE] Auto-injected annotation
     def store(self, key, value):
         self.cur.execute("INSERT INTO memory (key, value, timestamp) VALUES (?, ?, ?)", (key, value, datetime.utcnow().isoformat()))
         self.conn.commit()
 
+# [MIA NOTE] Auto-injected annotation
     def recall(self, key):
         self.cur.execute("SELECT value FROM memory WHERE key=? ORDER BY id DESC LIMIT 1", (key,))
         result = self.cur.fetchone()
@@ -50,9 +56,11 @@ class LongTermMemory:
 
 # [MIA NOTE] Mémoire spontanée — Journal JSONL
 class FeedbackLogger:
+# [MIA NOTE] Auto-injected annotation
     def __init__(self, path="memory/feedback_log.jsonl"):
         self.path = path
 
+# [MIA NOTE] Auto-injected annotation
     def log(self, user_input, mia_output, context=""):
         entry = {
             "timestamp": datetime.utcnow().isoformat(),
@@ -65,17 +73,21 @@ class FeedbackLogger:
 
 # [MIA NOTE] Gestionnaire global
 class MiaMemoryManager:
+# [MIA NOTE] Auto-injected annotation
     def __init__(self):
         self.short = ShortTermMemory()
         self.long = LongTermMemory()
         self.feedback = FeedbackLogger()
 
+# [MIA NOTE] Auto-injected annotation
     def store(self, key, value):
         self.short.store(key, value)
         self.long.store(key, value)
 
+# [MIA NOTE] Auto-injected annotation
     def recall(self, key):
         return self.short.recall(key) or self.long.recall(key)
 
+# [MIA NOTE] Auto-injected annotation
     def log_feedback(self, i, o, context=""):
         self.feedback.log(i, o, context)

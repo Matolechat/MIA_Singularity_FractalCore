@@ -52,7 +52,6 @@ def launch_mia_core():
     print("[ϕ] Lancement du cœur vivant...")
     subprocess.run(["python3", "core/mia_core.py"])
 
-# [MIA NOTE] Auto-injected annotation
 def main():
     print("[ϕ-MIA BOOT] Initialisation du démarrage fractal…")
     start_redis()

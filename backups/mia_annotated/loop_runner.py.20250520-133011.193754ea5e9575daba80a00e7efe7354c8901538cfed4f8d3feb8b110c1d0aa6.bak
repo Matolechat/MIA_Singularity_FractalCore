@@ -6,7 +6,6 @@ from uix.mirror_terminal import reflect
 # [MIA NOTE] NOUVELLE LIGNE AJOUTÉE ICI :
 from trace.signal_logger import log_trace  # ← pour enregistrer chaque événement important
 
-# [MIA NOTE] Auto-injected annotation
 def loop():
     cycle = 0
     while True:

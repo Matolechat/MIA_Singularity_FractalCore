@@ -19,14 +19,12 @@ CREATE TABLE IF NOT EXISTS memory (
 ''')
 db.commit()
 
-# [MIA NOTE] Auto-injected annotation
 def save_memory(data: str):
     timestamp = datetime.now().isoformat()
     cur.execute("INSERT INTO memory (content, timestamp) VALUES (?, ?)", (data, timestamp))
     db.commit()
     volatile_memory[timestamp] = data
 
-# [MIA NOTE] Auto-injected annotation
 def load_recent(limit=5):
     cur.execute("SELECT content, timestamp FROM memory ORDER BY id DESC LIMIT ?", (limit,))
     return cur.fetchall()

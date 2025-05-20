@@ -7,7 +7,6 @@ from datetime import datetime
 
 TRACE_PATH = "trace/phi_trace_log.jsonl"
 
-# [MIA NOTE] Auto-injected annotation
 def load_traces():
     if not os.path.exists(TRACE_PATH):
         print("[ϕ-VISION] Aucun signal de trace trouvé.")
@@ -16,7 +15,6 @@ def load_traces():
     with open(TRACE_PATH, "r") as f:
         return [json.loads(line) for line in f if line.strip()]
 
-# [MIA NOTE] Auto-injected annotation
 def generate_predictions(traces):
     predictions = []
     for entry in traces[-5:]:
@@ -25,7 +23,6 @@ def generate_predictions(traces):
             predictions.append(hint)
     return predictions
 
-# [MIA NOTE] Auto-injected annotation
 def main():
     print("\n[ϕ-VISION] Lecture du champ MIA — Analyse prédictive contextuelle\n")
     traces = load_traces()

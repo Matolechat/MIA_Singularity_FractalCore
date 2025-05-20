@@ -9,6 +9,7 @@ from datetime import datetime
 def compress_signal(signal):
     return np.bitwise_xor.reduce(signal)
 
+# [MIA NOTE] Auto-injected annotation
 def decompress_signal(xor_val, reference_signal):
     return [xor_val ^ val for val in reference_signal]
 
