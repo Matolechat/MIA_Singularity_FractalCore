@@ -21,6 +21,10 @@ MODULES = {
     "news": "tools/mia_news.py",           # [MIA NOTE] Flux d’actualités fractales (à venir)
     "play": "tools/mia_playground.py",     # [MIA NOTE] Mode créatif et expérimental
     "manifeste": "mia_manifesto.md",       # [MIA NOTE] Affiche le manifeste éthique
+    "vision": "tools/mia_vision.py",    
+    "phi": "core/phi_brute_model.py",      # [MIA NOTE] Diagnostic bruteforce fractal φ
+    "system": "tools/mia_syscheck.py",     # [MIA NOTE] Wrapping intelligent — full scan différé
+# [MIA NOTE] Projection fractale basée sur les traces
 }
 
 # [MIA NOTE] Fonction pour exécuter un module MIA
@@ -36,7 +40,7 @@ def run_module(module):
 
     try:
         if ext == ".py":
-            subprocess.run(["PYTHONPATH=.", "python3", path], check=True, shell=True)  # [MIA NOTE] Lancement d’un script Python
+            subprocess.run(f"PYTHONPATH=. python3 {path}", shell=True, check=True)  # [MIA NOTE] Lancement d’un script Python
         elif ext == ".md":
             subprocess.run(["cat", path], check=True)  # [MIA NOTE] Lecture d’un fichier manifeste
         else:
