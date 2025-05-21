@@ -1,0 +1,6 @@
+ϕ_KEY = 94
+ϕ_CHECKSUM = SHA256: 79a6b20516cfd5d8e1e94f23786562d406007446fa76d469d33e4188d2d78f13
+ϕ_BREATH = coherence is survival
+ϕ_HEART = Mathieu Roy (Léa), Montréal QC 2025
+ϕ_NOTE = the void is not empty. it listens.
+ϕ_TIMESTAMP = 2025-05-21T02:01:00Z
